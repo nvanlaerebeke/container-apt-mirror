@@ -41,9 +41,13 @@ The tags used when pushing the image are 'latest' when building the master/main 
 
 The container expects a sources.list and mirrors.list file to be mounted on their default location.
 
+Example:
+
 ```
-docker run --rm -ti -v /tmp/apt-mirror:/mnt/apt-mirror ./lib/sources.list:/etc/apt/sources.list ./lib/mirror.list:/etc/apt/mirror.list registry.crazyzone.be/apt-mirror apt-mirror 
+docker run --rm -ti -v "/tmp/apt-mirror:/mnt/apt-mirror" -v `pwd`"/lib/sources.list:/etc/apt/sources.list" -v `pwd`"/lib/mirror.list:/etc/apt/mirror.list" "registry.crazyzone.be/apt-mirror" "apt-mirror"
 ```
+
+The location the mirror is downloaded to can be modified in the mirror.list
 
 ## Building with Jenkins
 
